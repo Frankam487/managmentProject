@@ -1,12 +1,26 @@
+import { Link } from "react-router-dom";
+import { NavLogin } from "../components/NavLogin";
+
 const Home = () => {
-    return ( 
+    return (
         <div className="home">
-            <h1>home</h1>
+           <div className="home-header">
+           <h1 className="bi bi-house">Manager</h1>
+           <NavLogin />
+           </div>
+            <div className="login-container">
+                <h1>Login</h1>
+                <form autoComplete="off">
+                    <label htmlFor="email">email:</label>
+                    <input type="text" id="email" placeholder="enter your email" />
+                    <label htmlFor="password">password</label>
+                    <input type="password" placeholder="enter your password" id="password" />
+                    <button>Login</button>
+                </form>
+            </div>
+
         </div>
-     );
+    );
 }
- 
+
 export default Home;
-<div className="home">
-    <h1>home</h1>
-</div>
