@@ -12,9 +12,9 @@ const Home = () => {
                 <h1>Login</h1>
                 <form autoComplete="off">
                     <label htmlFor="email">email:</label>
-                    <input type="text" id="email" placeholder="enter your email" />
+                    <input type="text" autoComplete="off" id="email" placeholder="enter your email" />
                     <label htmlFor="password">password</label>
-                    <input type="password" placeholder="enter your password" id="password" />
+                    <input autoComplete="off" type="password" placeholder="enter your password" id="password" />
                     <button>Login</button>
                 </form>
             </div>
