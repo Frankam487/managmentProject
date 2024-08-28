@@ -1,12 +1,28 @@
 import { useState } from "react";
+import axios from "axios";
 import { Logo } from "../components/Logo";
 import { useForm } from 'react-hook-form'
 export const Registration = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-
+    const [pass, setPass] = useState(false);
 
     const onsubmit = (e) => {
-        console.log(e);
+        const name = e.name;
+        const email = e.email;
+        const password = e.password;
+        const confirmPass = e.confirm;
+
+        password !== confirmPass ? setPass(true)
+            :
+            setPass(false)
+
+        const data = {
+            name,
+            email,
+            password,
+            confirmPass
+        }
+        axios.put("http://localhost:2000/post", data);
 
     }
     return (
@@ -22,7 +38,7 @@ export const Registration = () => {
 
                     <label htmlFor="email">Email: <br /></label>
 
-                    <input type="email" name="email"
+                    <input autoComplete="off" type="email" name="email"
                         {...register("email", {
                             required: "Ce champ est requis",
                             pattern: {
@@ -30,7 +46,7 @@ export const Registration = () => {
                                 message: "Adresse email invalide"
                             }
                         })}
-                        autoComplete="off" id="email" placeholder="entrer email" /> <br />
+                        id="email" placeholder="entrer email" /> <br />
                     {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
                     <label htmlFor="password">password</label>
                     <br />
@@ -49,6 +65,7 @@ export const Registration = () => {
                     <input
                         autoComplete="off" type="password" placeholder="enter your password" name="confirm" id="password" {...register("confirm", { required: true, minLength: 4 })} />
                     {errors.confirm && <p style={{ color: "red" }}>Erreur mot de passe</p>}
+                    {pass && <p style={{ color: "red" }}>Les mots de passe ne sont pas identiques...</p>}
                     <br />
                     <button type="submit">Login</button>
                 </form>

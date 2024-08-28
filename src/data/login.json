@@ -1,5 +1,11 @@
 {
     "post" : [
-        
+        {
+            "name": "frank",
+            "email": "frankkamgang@gmail.com",
+            "password": "hacking4",
+            "confirmPass": "hacking4"
+        }
+
     ]
 }
