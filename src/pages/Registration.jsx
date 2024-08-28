@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Logo } from "../components/Logo";
 import { useForm } from 'react-hook-form'
+import Succes from "../components/Succes";
 export const Registration = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [pass, setPass] = useState(false);
@@ -22,7 +23,10 @@ export const Registration = () => {
             password,
             confirmPass
         }
-        axios.put("http://localhost:2000/post", data);
+        axios.post("http://localhost:2000/users", data).then(() => {
+            <h1>{<Succes />}</h1>
+        }
+        );
 
     }
     return (
@@ -63,7 +67,7 @@ export const Registration = () => {
                     <label htmlFor="password">Confirm-password</label>
                     <br />
                     <input
-                        autoComplete="off" type="password" placeholder="enter your password" name="confirm" id="password" {...register("confirm", { required: true, minLength: 4 })} />
+                        autoComplete="off" type="password" placeholder="enter your password" name="confirm" id="password-confirm" {...register("confirm", { required: true, minLength: 4 })} />
                     {errors.confirm && <p style={{ color: "red" }}>Erreur mot de passe</p>}
                     {pass && <p style={{ color: "red" }}>Les mots de passe ne sont pas identiques...</p>}
                     <br />

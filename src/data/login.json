@@ -1,11 +1,12 @@
 {
-    "post" : [
-        {
-            "name": "frank",
-            "email": "frankkamgang@gmail.com",
-            "password": "hacking4",
-            "confirmPass": "hacking4"
-        }
-
-    ]
+  "users": [
+    {
+      "name": "frank",
+      "email": "frankkamgang@gmail.com",
+      "password": "hacking4",
+      "confirmPass": "hacking4",
+      "id": "3aa5"
+    }
+    
+  ]
 }
